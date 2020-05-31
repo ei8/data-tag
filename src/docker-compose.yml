@@ -4,10 +4,10 @@ services:
   data-tag.in.api:
     image: ei8works/data.tag.in.api:0.1.2
     build:
-      context: ./main/Port.Adapter/In/Api/
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./main/Port.Adapter/In/Api/Dockerfile
   data-tag.out.api:
     image: ei8works/data.tag.out.api:0.1.2
     build:
-      context: ./main/Port.Adapter/Out/Api/
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: ./main/Port.Adapter/Out/Api/Dockerfile
