@@ -1,17 +1,17 @@
 version: '3.4'
 
 services:
-  data-tag.in.api:
+  data.tag.in.api:
     env_file:
       - ./var1.env
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - 192.168.8.131:60050:80
-  data-tag.out.api:
+  data.tag.out.api:
     env_file:
       - ./var1.env
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-    ports:
-      - 192.168.8.131:60051:80
+networks:
+    default:
+        external:
+            name: sample_default
