@@ -2,12 +2,12 @@ version: '3.4'
 
 services:
   data.tag.in.api:
-    image: ei8works/data.tag.in.api:0.1.2
+    image: ei8works/data.tag.in.api:0.1.3
     build:
       context: .
       dockerfile: ./main/Port.Adapter/In/Api/Dockerfile
   data.tag.out.api:
-    image: ei8works/data.tag.out.api:0.1.2
+    image: ei8works/data.tag.out.api:0.1.3
     build:
       context: .
       dockerfile: ./main/Port.Adapter/Out/Api/Dockerfile

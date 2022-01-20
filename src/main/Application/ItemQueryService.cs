@@ -6,20 +6,21 @@ using System.Threading.Tasks;
 using ei8.EventSourcing.Client;
 using ei8.Data.Tag.Common;
 using ei8.Data.Tag.Domain.Model;
+using CQRSlite.Domain;
 
 namespace ei8.Data.Tag.Application
 {
     public class ItemQueryService : IItemQueryService
     {
-        private readonly IEventSourceFactory eventSourceFactory;
+        private readonly ISession session;
         private readonly ISettingsService settingsService;
 
-        public ItemQueryService(IEventSourceFactory eventSourceFactory, ISettingsService settingsService)
+        public ItemQueryService(ISession session, ISettingsService settingsService)
         {
-            AssertionConcern.AssertArgumentNotNull(eventSourceFactory, nameof(eventSourceFactory));
+            AssertionConcern.AssertArgumentNotNull(session, nameof(session));
             AssertionConcern.AssertArgumentNotNull(settingsService, nameof(settingsService));
 
-            this.eventSourceFactory = eventSourceFactory;
+            this.session = session;
             this.settingsService = settingsService;
         }
 
@@ -32,14 +33,7 @@ namespace ei8.Data.Tag.Application
                 nameof(id)
                 );
 
-            // Using a random Guid for Author as we won't be saving anyway
-            var eventSource = this.eventSourceFactory.Create(
-                this.settingsService.EventSourcingInBaseUrl + "/",
-                this.settingsService.EventSourcingOutBaseUrl + "/",
-                Guid.NewGuid()
-                );
-
-            var item = await eventSource.Session.Get<Item>(id, cancellationToken: token);
+            var item = await this.session.Get<Item>(id, cancellationToken: token);
 
             return new ItemData()
             {
