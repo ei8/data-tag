@@ -7,6 +7,9 @@ using System;
 using ei8.EventSourcing.Client;
 using ei8.Data.Tag.Application;
 using ei8.Data.Tag.Port.Adapter.IO.Process.Services;
+using ei8.Data.Tag.Port.Adapter.In.InProcess;
+using CQRSlite.Domain;
+using CQRSlite.Events;
 
 namespace ei8.Data.Tag.Port.Adapter.In.Api
 {
@@ -23,9 +26,20 @@ namespace ei8.Data.Tag.Port.Adapter.In.Api
             var ipb = new Router();
             container.Register<ICommandSender, Router>(ipb);
             container.Register<IHandlerRegistrar, Router>(ipb);
-            container.Register<IEventSerializer, EventSerializer>(new EventSerializer());
-            container.Register<IEventSourceFactory, EventSourceFactory>();
+            container.Register<IEventSerializer, EventSerializer>();
             container.Register<ISettingsService, SettingsService>();
+            container.Register<IEventStoreUrlService>(
+                (tic, npo) => {
+                var ss = container.Resolve<ISettingsService>();
+                return new EventStoreUrlService(
+                    ss.EventSourcingInBaseUrl + "/",
+                    ss.EventSourcingOutBaseUrl + "/"
+                    );
+                });
+            container.Register<IEventStore, HttpEventStoreClient>();
+            container.Register<IRepository, Repository>();
+            container.Register<ISession, Session>();
+            container.Register<IItemAdapter, ItemAdapter>();
             container.Register<ItemCommandHandlers>();
 
             var ticl = new TinyIoCServiceLocator(container);
