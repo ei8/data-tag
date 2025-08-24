@@ -1,14 +1,13 @@
 ﻿using CQRSlite.Commands;
+using CQRSlite.Domain;
+using CQRSlite.Events;
+using ei8.Data.Tag.Domain.Model;
+using ei8.EventSourcing.Client;
+using ei8.EventSourcing.Client.In;
 using neurUL.Common.Domain.Model;
-using neurUL.Common.Http;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ei8.EventSourcing.Client;
-using ei8.EventSourcing.Client.In;
-using ei8.Data.Tag.Domain.Model;
-using CQRSlite.Domain;
-using CQRSlite.Events;
 
 namespace ei8.Data.Tag.Application
 {

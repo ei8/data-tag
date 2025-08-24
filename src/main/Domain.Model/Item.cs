@@ -1,4 +1,5 @@
-﻿using neurUL.Common.Domain.Model;
+﻿using neurUL.Common.CqrsLite;
+using neurUL.Common.Domain.Model;
 using System;
 
 namespace ei8.Data.Tag.Domain.Model

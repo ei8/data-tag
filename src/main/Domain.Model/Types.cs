@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ei8.Data.Tag.Domain.Model
+﻿namespace ei8.Data.Tag.Domain.Model
 {
     public struct Messages
     {

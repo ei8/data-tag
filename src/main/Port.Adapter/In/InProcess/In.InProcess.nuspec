@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ei8.Data.Tag.Port.Adapter.In.InProcess</id>
-    <version>0.1.11</version>
+    <version>0.2.0</version>
     <title>ei8.Data.Tag.Port.Adapter.In.InProcess</title>
     <authors>Elmer Roderick Niem Bool</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

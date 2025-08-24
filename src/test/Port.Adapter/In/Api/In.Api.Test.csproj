@@ -21,8 +21,4 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\main\Port.Adapter\In\Api\In.Api.csproj" />
-  </ItemGroup>
-
 </Project>
